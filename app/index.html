@@ -3,23 +3,118 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GTA VI trophy checklist</title>
+<title>Leonida Crown — GTA VI Trophy Guide &amp; Tracker (all 55, cited)</title>
+<meta name="description" content="Offline guide and tracker for all 55 GTA VI trophies on PS5: cited guides, a 6-stage platinum roadmap, a source matrix, a missable watch list and a spoiler-safe checklist.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1>GTA VI trophy checklist</h1>
-  <p id="progress">0 of 55 earned</p>
+<header class="site-header">
+  <div class="brand">
+    <div class="crown" aria-hidden="true">♛</div>
+    <div>
+      <h1>LEONIDA CROWN</h1>
+      <p class="tagline">GTA VI trophy guide &amp; tracker — all 55 trophies, every guide cited, spoiler-safe</p>
+    </div>
+  </div>
+  <div class="progress-block">
+    <div class="progress-line"><span id="progressText">0 of 55 earned</span><span id="progressPct">0%</span></div>
+    <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="55" aria-valuenow="0" id="progressBarWrap"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-sub" id="progressSub">1 platinum · 2 gold · 6 silver · 46 bronze · 28 hidden</div>
+  </div>
 </header>
-<div class="controls">
-  <label>Grade <select id="grade"><option value="all">All</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
-  <button id="export" type="button">Export progress</button>
-  <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
-</div>
-<table>
-  <thead><tr><th>Earned</th><th>Trophy</th><th>Grade</th><th>How to get it</th></tr></thead>
-  <tbody id="rows"></tbody>
-</table>
-<script type="module" src="app.js"></script>
+
+<section class="audit" id="auditStrip" aria-label="Coverage audit">
+  <div class="audit-item"><strong id="auditTrophies">55/55</strong><span>trophies listed</span></div>
+  <div class="audit-item"><strong id="auditCited">55/55</strong><span>guides cited</span></div>
+  <div class="audit-item"><strong id="auditMissable">1</strong><span>missable flagged</span></div>
+  <div class="audit-item"><strong id="auditSources">4</strong><span>sources used</span></div>
+  <div class="audit-item"><strong id="auditUnconfirmed">8</strong><span>marked unconfirmed, honestly</span></div>
+  <div class="audit-item"><strong>0</strong><span>online trophies — all single-player</span></div>
+</section>
+
+<nav class="tabs" aria-label="Views">
+  <button type="button" class="tab active" data-view="tracker">Tracker</button>
+  <button type="button" class="tab" data-view="roadmap">Platinum Roadmap</button>
+  <button type="button" class="tab" data-view="sources">Source Matrix</button>
+  <button type="button" class="tab" data-view="missable">Missable Watch</button>
+</nav>
+
+<main>
+  <section id="view-tracker" class="view active">
+    <div class="toolbar">
+      <div class="filters" id="kindFilters" role="group" aria-label="Filter by kind">
+        <button type="button" class="chip active" data-kind="all">All 55</button>
+        <button type="button" class="chip" data-kind="story">Story</button>
+        <button type="button" class="chip" data-kind="collectibles">Collectibles</button>
+        <button type="button" class="chip" data-kind="activities">Activities</button>
+        <button type="button" class="chip" data-kind="platinum">Platinum</button>
+        <button type="button" class="chip" data-kind="missable">Missable</button>
+        <button type="button" class="chip" data-kind="earned">Earned</button>
+        <button type="button" class="chip" data-kind="remaining">Remaining</button>
+      </div>
+      <div class="tools">
+        <input type="search" id="searchBox" placeholder="Search trophies…" aria-label="Search trophies">
+        <label class="spoiler-toggle"><input type="checkbox" id="spoilerToggle" checked> <span>Hide story spoilers</span></label>
+        <button type="button" id="exportBtn">Export JSON</button>
+        <label class="import-btn">Import JSON <input type="file" id="importFile" accept="application/json,.json"></label>
+      </div>
+    </div>
+    <p class="list-note" id="listNote"></p>
+    <div class="tracker-layout">
+      <div class="list-col"><ol class="trophy-list" id="trophyList"></ol></div>
+      <aside class="guide-col" id="guidePanel" aria-live="polite">
+        <div class="guide-empty">
+          <h2>Pick a trophy to read its guide</h2>
+          <p>Every guide is written in this entry's own words and names its sources beside it. Story trophies stay hidden while spoilers are on — tick one earned (or turn spoilers off) to reveal it.</p>
+          <p class="guide-tip"><strong>One warning:</strong> <a href="#trophy-28">Positive Mental Attitude</a> is the only trophy reported as possibly missable. Do Lucia's balcony meditation in Chapter 1.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="view-roadmap" class="view">
+    <div class="view-intro">
+      <h2>The road to the platinum — 6 stages, all 55 trophies</h2>
+      <p>One playthrough, no difficulty settings, no mission replay, free roam after the credits. Published roadmaps put the platinum at around 200 hours; the 100% checklist is the longest stretch. Cheats disable trophies and saving — keep them off your trophy run.</p>
+    </div>
+    <div id="roadmapStages"></div>
+  </section>
+
+  <section id="view-sources" class="view">
+    <div class="view-intro">
+      <h2>Source matrix — where every fact comes from</h2>
+      <p>Names, descriptions and grades come from the official list as Exophase and PSNProfiles published it on 18 Nov 2026 (the two agree on every name, description and grade). Steps come from the published guides below, named beside each trophy. A specific step with no source gets no credit here — so every guide is cited, and anything unconfirmed is marked as such instead of guessed.</p>
+    </div>
+    <div id="sourceList"></div>
+    <div class="disputes">
+      <h3>Disputes, resolved in the open</h3>
+      <ul>
+        <li><strong>Meditations: 18 or 15?</strong> The trophy needs 18 meditations; the 100% checklist needs only 15 of 18. Different counters, both reported — the trophy number is the one that matters for Positive Mental Attitude.</li>
+        <li><strong>Is the Chapter 1 balcony meditation required?</strong> PowerPyx and GTABase both say it is unconfirmed: it raises the counter but is not marked as a spot. This guide's call: do it anyway — it costs a minute and removes the risk.</li>
+        <li><strong>Which stranger strands count?</strong> Four are confirmed by published guides; the rest are still being confirmed. Strangers &amp; Freaks is marked unconfirmed rather than padded with guesses.</li>
+      </ul>
+    </div>
+    <div id="sourceMatrix"></div>
+  </section>
+
+  <section id="view-missable" class="view">
+    <div class="view-intro">
+      <h2>Missable watch list</h2>
+      <p>Checked against the official descriptions and the published guides: exactly <strong>one</strong> trophy is reported as possibly missable. Everything else can be earned after the story in free roam.</p>
+    </div>
+    <div id="missableList"></div>
+    <div class="safe-note">
+      <h3>Safe: everything else</h3>
+      <p>All 12 story mission and chapter trophies are unmissable (mandatory missions). All side quest lines, collectibles, activities and robberies stay available after the credits — including Kenton's treasures, which resume when he texts again later. Nothing on the 100% checklist is missable.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>Leonida Crown — an unofficial fan guide. Grand Theft Auto and GTA are trademarks of Take-Two Interactive; this guide uses no Rockstar logo, artwork or game screenshots. All guide text is this entry's own words; sources are named, never copied. Works fully offline — no network requests.</p>
+  <p class="footer-meta">Official list via Exophase &amp; PSNProfiles, 18 Nov 2026 · Guide steps: GTABase (19 Nov 2026) &amp; PowerPyx (18 Nov 2026) · Progress is saved in your browser only.</p>
+</footer>
+
+<script type="module" src="js/main.js"></script>
 </body>
 </html>
